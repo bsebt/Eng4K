@@ -11,6 +11,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuard } from './auth/auth-guard.service';   /* will redirect to sites only if authenticated */
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/signup', pathMatch: 'full' }, /* FRONT PAGE ROUTE */
@@ -27,9 +28,10 @@ const appRoutes: Routes = [
 
   { path: 'shopping-list', component: ShoppingListComponent },
   */
-
+  //{ path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
+  
 ];
 
 @NgModule({
