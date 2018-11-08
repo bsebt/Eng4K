@@ -16,10 +16,13 @@ export class AuthService {
   }
 
   signinUser(email: string, password: string) {
+  
+    
+     
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
-          this.router.navigate(['/']); //home
+          this.router.navigate(['/recipes']); //home
           firebase.auth().currentUser.getToken()
             .then(
               (token: string) => this.token = token
@@ -28,7 +31,7 @@ export class AuthService {
       )
       .catch(
         error => console.log(error)
-      );
+      ); 
   }
 
   logout() {

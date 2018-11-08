@@ -14,7 +14,7 @@ import { AuthGuard } from './auth/auth-guard.service';   /* will redirect to sit
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' }, /* Default frontpage shown */
+  { path: '', redirectTo: '', pathMatch: 'full' }, /* Default frontpage shown */
 
 
 
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
 /*
   { path: 'shopping-list', component: ShoppingListComponent },
   */
-  //{ path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   
