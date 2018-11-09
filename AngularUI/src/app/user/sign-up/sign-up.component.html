@@ -5,7 +5,12 @@
   <input type="text" #fullName="ngModel" [(ngModel)]="service.user.fullName" name="fullName" placeholder="Full Name"
   required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
   <div *ngIf="signUpForm.submitted && !fullName.valid">
-    <label class="validation-message">You must provide your name.</label>
+    <label class="validation-message">You must provide your first name.</label>
+  </div>
+  <input type="text" #lastName="ngModel" [(ngModel)]="service.user.lastName" name="lastName" placeholder="Last Name"
+  required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !lastName.valid }">
+  <div *ngIf="signUpForm.submitted && !lastName.valid">
+    <label class="validation-message">You must provide your last name.</label>
   </div>
   <input type="text" #email="ngModel" [(ngModel)]="service.user.email" name="email" placeholder="Email"
   required [pattern]="regex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">

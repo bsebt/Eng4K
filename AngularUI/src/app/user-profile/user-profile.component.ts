@@ -29,4 +29,8 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  onHome() {
+    this.router.navigate(['/home']);
+  }
+
 }

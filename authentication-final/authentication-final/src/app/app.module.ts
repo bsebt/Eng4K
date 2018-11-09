@@ -38,8 +38,8 @@ import { HomeComponent } from './home/home.component';
     RecipeStartComponent,
     RecipeEditComponent,
     SignupComponent,
-    SigninComponent
-    //HomeComponent
+    SigninComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
