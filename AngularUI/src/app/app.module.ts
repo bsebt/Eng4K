@@ -19,7 +19,7 @@ import { UserService } from './shared/user.service';
 // Authentication - will prob have to remove
 import { AuthGuard } from './auth/auth.guard';
 //import { AuthInterceptor } from './auth/auth.interceptor';
-//import { HomeComponent } from './home/home-component';
+import { HomeComponent } from './home/home-component';
 
 //Firebsae
 import { rootRouterConfig } from './routes';
@@ -40,7 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent, //SignUpComponent,
     //UserProfileComponent,
     LoginComponent,//SignInComponent,
-    //HomeComponent
+    HomeComponent //new
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),

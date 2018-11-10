@@ -6,6 +6,7 @@ import { LoginComponent } from './user/sign-in/sign-in.component';
 //import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserResolver } from './user/user.resolver';
+import { HomeComponent } from './home/home-component';
 
 // export const appRoutes: Routes = [
 //     {
@@ -34,5 +35,6 @@ export const rootRouterConfig: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
     { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+    { path: 'home', component: HomeComponent, resolve: { data: UserResolver} }, //new
     { path: 'user', component: UserComponent,  resolve: { data: UserResolver}}
   ];

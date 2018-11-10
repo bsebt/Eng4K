@@ -1,23 +1,33 @@
-import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FirebaseUserModel } from '../shared/user.model';
 import { environment } from '../../environments/environment';
 
+import { Component, OnInit } from '@angular/core';
 
-//@Component({
-    //selector: 'home',
-    //templateUrl: './home-component.html'
-  //})
-  //export class HomeComponent {
 
-    //constructor(private http: HttpClient) { }
+//Firebase
+import { UserService } from '../shared/user.service';
+import { AuthService } from '../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-    // postFile(user: User){
-    //    // return this.http.post(environment.baseUrl+'/register',user);
-    //   }
 
-    // getFile() {
-    //    // return this.http.get(environment.baseUrl+'/userprofile');
-    //   }
 
-    //}
+
+@Component({
+    selector: 'home',
+    templateUrl: './home-component.html'
+  })
+  export class HomeComponent {
+
+    constructor() { }
+
+   // postFile(user: User){
+       // return this.http.post(environment.baseUrl+'/register',user);
+ //     }
+
+ //   getFile() {
+       // return this.http.get(environment.baseUrl+'/userprofile');
+  //    }
+
+  }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 //Firebase
 import { UserService } from '../shared/user.service';
 import { AuthService } from '../auth/auth.service';
@@ -57,6 +58,10 @@ export class UserComponent implements OnInit{
     .then(res => {
       console.log(res);
     }, err => console.log(err))
+    
+    if(confirm("Changes Saved")) {   //Confirmation Dialogue
+      console.log("Username updated");
+    }
   }
 
   logout(){
@@ -67,4 +72,6 @@ export class UserComponent implements OnInit{
       console.log("Logout error", error);
     });
   }
+
+
 }
