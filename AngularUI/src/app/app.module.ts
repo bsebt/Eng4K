@@ -7,40 +7,57 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 // components
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
+//import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 
 //Routing
-import { appRoutes } from './routes';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { SignInComponent } from './user/sign-in/sign-in.component';
+//import { appRoutes } from './routes';
+//import { UserProfileComponent } from './user-profile/user-profile.component';
+//import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
 
-// Authentication
+// Authentication - will prob have to remove
 import { AuthGuard } from './auth/auth.guard';
-import { AuthInterceptor } from './auth/auth.interceptor';
-import { HomeComponent } from './home/home-component';
+//import { AuthInterceptor } from './auth/auth.interceptor';
+//import { HomeComponent } from './home/home-component';
+
+//Firebsae
+import { rootRouterConfig } from './routes';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './user/sign-in/sign-in.component';
+import { RegisterComponent } from './user/sign-up/sign-up.component';
+import { UserResolver } from './user/user.resolver';
+import { AuthService } from './auth/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    SignUpComponent,
-    UserProfileComponent,
-    SignInComponent,
-    HomeComponent
+    RegisterComponent, //SignUpComponent,
+    //UserProfileComponent,
+    LoginComponent,//SignInComponent,
+    //HomeComponent
   ],
   imports: [
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    // BrowserModule,
+    // FormsModule,
+    // RouterModule.forRoot(appRoutes),
+    // HttpClientModule
     BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },AuthGuard, UserService],
+  providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

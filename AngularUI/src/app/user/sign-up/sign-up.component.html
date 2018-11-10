@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <h1>C e n t r u m</h1>
 </div>
 <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
@@ -25,14 +25,45 @@
     <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 6 characters.</label>
   </div>
   <input type="submit" value="Sign Up">
-</form>
+</form> -->
 
 <!-- Success message -->
-<div class="success" *ngIf="showSucessMessage">
+<!-- <div class="success" *ngIf="showSucessMessage">
   Saved successfully
-</div>
+</div> -->
 
 <!-- Error message -->
-<div class="alert" *ngIf="serverErrorMessages">
+<!-- <div class="alert" *ngIf="serverErrorMessages">
   {{serverErrorMessages}}
+</div> -->
+
+<h1 class="header">DATA ANALYTICS</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <form [formGroup]="registerForm">
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" formControlName="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password">
+          <label class="error">{{errorMessage}}</label>
+          <label class="success">{{successMessage}}</label>
+        </div>
+        <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <button type="button" class="btn btn-danger btn-block" (click)="tryGoogleLogin()">Register with Google</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </div>
 </div>

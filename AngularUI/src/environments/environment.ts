@@ -7,7 +7,16 @@ export const environment = {
   // Url to redirect and sign up with mongo DB
   // Will be changed in the future, for now use ur local host
   // and change this url as you see fit to work.
-  baseUrl: 'http://localhost:3000/api'
+  //baseUrl: 'http://localhost:3000/api'
+  
+  firebase: {
+    apiKey: "AIzaSyBiomiSQpwg4PFFAML9o3WhhthUgjkB9HU",
+    authDomain: "dataanalytics-62317.firebaseapp.com",
+    databaseURL: "https://dataanalytics-62317.firebaseio.com",
+    projectId: "dataanalytics-62317",
+    storageBucket: "dataanalytics-62317.appspot.com",
+    messagingSenderId: "871806633643"
+  }
 };
 
 /*

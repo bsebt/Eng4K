@@ -1,33 +1,37 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
-import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
-import { Router } from "@angular/router";
+// import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
+// import { Injectable } from '@angular/core';
+// import { tap } from 'rxjs/operators';
+// import { Router } from "@angular/router";
 
-import { UserService } from "../shared/user.service";
+// //firebase
+// //import { AngularFireAuth } from 'angularfire2/auth';
+// //import * as firebase from 'firebase/app';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+// import { UserService } from "../shared/user.service";
 
-    constructor(private service : UserService,private router : Router){}
+// @Injectable()
+// export class AuthInterceptor implements HttpInterceptor {
 
-    intercept(req: HttpRequest<any>, next: HttpHandler) {
+//     constructor(private service : UserService,private router : Router){}
 
-        if (req.headers.get('noauth')) {
-            return next.handle(req.clone());
-        }
-        else {
-            const clonedreq = req.clone({
-                headers: req.headers.set("Authorization", "Bearer " + this.service.getJwtToken())
-            });
-            return next.handle(clonedreq).pipe(
-                tap(
-                    event => { },
-                    err => {
-                        if (err.error.auth == false) {
-                            this.router.navigateByUrl('/login');
-                        }
-                    })
-            );
-        }
-    }
-}
+//     intercept(req: HttpRequest<any>, next: HttpHandler) {
+
+//         if (req.headers.get('noauth')) {
+//             return next.handle(req.clone());
+//         }
+//         else {
+//             const clonedreq = req.clone({
+//                 headers: req.headers.set("Authorization", "Bearer " + this.service.getJwtToken())
+//             });
+//             return next.handle(clonedreq).pipe(
+//                 tap(
+//                     event => { },
+//                     err => {
+//                         if (err.error.auth == false) {
+//                             this.router.navigateByUrl('/login');
+//                         }
+//                     })
+//             );
+//         }
+//     }
+// }
