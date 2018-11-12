@@ -22,6 +22,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home-component';
 
 //Firebsae
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { rootRouterConfig } from './routes';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -32,6 +33,10 @@ import { RegisterComponent } from './user/sign-up/sign-up.component';
 import { UserResolver } from './user/user.resolver';
 import { AuthService } from './auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UploadFileComponent } from './home/upload-file/upload-file.component';
+import { FormUploadComponent } from './home/form-upload/form-upload.component';
+import { ListUploadComponent } from './home/list-upload/list-upload.component';
+import { DetailsUploadComponent } from './home/details-upload/details-upload.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent, //SignUpComponent,
     //UserProfileComponent,
     LoginComponent,//SignInComponent,
-    HomeComponent //new
+    HomeComponent, UploadFileComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent //new
   ],
   imports: [
     // AngularFireModule.initializeApp(environment.firebase),
@@ -56,6 +61,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    AngularFireDatabaseModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]

@@ -15,12 +15,14 @@ import { Location } from '@angular/common';
 
 
 @Component({
-    selector: 'home',
+    selector: 'app-root',
     templateUrl: './home-component.html'
   })
-  export class HomeComponent {
 
-    constructor() { }
+export class HomeComponent {
+  title = 'JavaSampleApproach';
+  description = 'Angular-Firebase Demo';
+}
 
    // postFile(user: User){
        // return this.http.post(environment.baseUrl+'/register',user);
@@ -30,4 +32,4 @@ import { Location } from '@angular/common';
        // return this.http.get(environment.baseUrl+'/userprofile');
   //    }
 
-  }
+  
