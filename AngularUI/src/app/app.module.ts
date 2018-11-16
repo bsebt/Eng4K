@@ -15,6 +15,7 @@ import { UserComponent } from './user/user.component';
 //import { UserProfileComponent } from './user-profile/user-profile.component';
 //import { SignInComponent } from './user/sign-in/sign-in.component';
 import { UserService } from './shared/user.service';
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 
 // Authentication - will prob have to remove
 import { AuthGuard } from './auth/auth.guard';
@@ -61,7 +62,7 @@ import { DetailsUploadComponent } from './home/details-upload/details-upload.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule, Ng2PageScrollModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard],
   bootstrap: [AppComponent]

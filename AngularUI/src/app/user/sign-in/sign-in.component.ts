@@ -11,6 +11,7 @@ import { UserService } from '../../shared/user.service';
 import { AuthService } from '../../auth/auth.service'
 import { Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as $ from 'jquery';
 
 
 // @Component({
