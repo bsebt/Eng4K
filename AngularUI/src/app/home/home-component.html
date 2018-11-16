@@ -1,14 +1,23 @@
+<!DOCTYPE html>
+<html>
 
-<div class="container-fluid">
-  <div style="color: blue; margin-bottom: 20px">
-    <h1>{{title}}</h1>
-    <h3>{{description}}</h3>
+<head></head>
+
+<body>
+  <div class="container-fluid">
+    <div style="color: blue; margin-bottom: 20px">
+      <h1>{{title}}</h1>
+      <h3>{{description}}</h3>
+    </div>
+    <form-upload></form-upload>
+    <br>
+    <br>
+    <list-upload></list-upload>
+   
   </div>
- 
-  <form-upload></form-upload>
- 
-  <br/>
-  <br/>
- 
-  <list-upload></list-upload>
-</div>
+
+  <a routerLink="../user"><button class="btn btn-primary" > Go Back </button></a>
+
+</body>
+
+</html>

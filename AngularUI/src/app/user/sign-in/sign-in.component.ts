@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // Inject the router
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { UserService } from '../../shared/user.service';
 

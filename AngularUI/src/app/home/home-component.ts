@@ -22,7 +22,12 @@ import { Location } from '@angular/common';
 export class HomeComponent {
   title = 'JavaSampleApproach';
   description = 'Angular-Firebase Demo';
+
+
+
 }
+
+
 
    // postFile(user: User){
        // return this.http.post(environment.baseUrl+'/register',user);
