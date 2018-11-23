@@ -97,10 +97,14 @@
 
       <div class="col-md-4 col-md-offset-4">
         <label>Access your account</label>
-        <input type="email" id="email" class="form-control text-center" formControlName="email" placeholder="Email Address"
-          required>
-        <input type="password" id="password" class="form-control text-center" formControlName="password" placeholder="Password"
-          required>
+        <div class="text-center">
+            <input type="email" id="email" class="form-control text-center" formControlName="email" placeholder="Email Address"
+            required>
+        </div>
+        <div style="margin-top:2px">
+            <input type="password" id="password" class="form-control text-center" formControlName="password" placeholder="Password"
+            required>
+        </div>
       </div>
       
     </form>
@@ -233,22 +237,26 @@
         <p><span class="glyphicon glyphicon-phone"></span> (416) 258-7513</p>
         <p><span class="glyphicon glyphicon-envelope"></span> tagAI@contact.ca</p>
       </div>
+      <form [formGroup]="contactForm">
+
+      
       <div class="col-sm-7">
         <div class="row">
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="name" name="name" placeholder="Name" type="email" required>
+            <input class="form-control" formControlName="name" id="name" name="name" placeholder="Name" type="email" required>
           </div>
           <div class="col-sm-6 form-group">
-            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+            <input class="form-control" id="email" formControlName="email" name="email" placeholder="Email" type="email" required>
           </div>
         </div>
-        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <textarea class="form-control" id="comments" formControlName="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
         <div class="row">
           <div class="col-sm-12 form-group">
-            <button class="btn btn-default pull-right" type="submit">Send</button>
+            <button class="btn btn-default pull-right" (click)="tryContact(contactForm.value)" type="submit">Send</button>
           </div>
         </div>
       </div>
+    </form>
     </div>
   </div>
 

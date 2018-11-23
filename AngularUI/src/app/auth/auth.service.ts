@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { resolve } from "url";
+import { reject } from "q";
 
 @Injectable()
 export class AuthService {
@@ -56,5 +58,22 @@ export class AuthService {
     });
   }
 
+  /**
+   * doContact gets invoked when a user click on 'submit' on the contact us jumbotron. 
+   * The method will take the email, name and comments and store it in the 'messages'
+   * set on firebase.
+   * @param value 
+   */
+  doContact(value) {
+    return new Promise<any> ((resolve, reject) => {
+      var messagesRef = firebase.database().ref('messages');
+      var newMessageRef = messagesRef.push();
+      newMessageRef.set({
+        name: value.name,
+        comments: value.comments,
+        email: value.email
+      });
+    });
+  }
 
 }

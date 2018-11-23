@@ -54,6 +54,7 @@ import * as $ from 'jquery';
 export class LoginComponent {
 
   loginForm: FormGroup;
+  contactForm: FormGroup;
   errorMessage: string = '';
 
   constructor(
@@ -62,12 +63,21 @@ export class LoginComponent {
     private fb: FormBuilder
   ) {
     this.createForm();
+    this.createContact();
   }
 
   createForm() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required ],
       password: ['',Validators.required]
+    });
+  }
+
+  createContact() {
+    this.contactForm = this.fb.group({
+      email: ['', Validators.required],
+      name: [''],
+      comments: ['']
     });
   }
 
@@ -85,6 +95,15 @@ export class LoginComponent {
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
+    })
+  }
+
+  tryContact(value) {
+    this.authService.doContact(value)
+    .then(res => {
+       
+    }, err => {
+     console.log(err);
     })
   }
 }
