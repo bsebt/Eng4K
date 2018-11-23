@@ -184,6 +184,26 @@ footer .glyphicon {
     font-family: 'Courier New', Courier, monospace !important;
 } */
 
+input, select {
+        width:100%;
+        border:1px solid #ccc;
+        padding:3px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -ms-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        -webkit-box-sizing:content-box;
+        box-sizing:content-box;
+        align-content: center !important;
+        display: block;
+        margin: 0  auto;
+
+}
+input {
+    text-indent: 4px;
+}
+
 body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;

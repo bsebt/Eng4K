@@ -89,6 +89,19 @@ export class RegisterComponent {
        console.log(res);
        this.errorMessage = "";
        this.successMessage = "Your account has been created";
+       // After the user signs up, Firebase automatically authenticates
+       // the user and logs the user in immdeiately. We don't want this. 
+       // We want to sign up the user but logging them out in the background
+       // To prevent auto-login.
+       this.authService.doLogout();
+       setTimeout(() => {
+        this.successMessage = "Navigating back to login page..";
+       },
+      1000);
+       setTimeout(() => {
+        this.router.navigate(['/login']);
+       },
+      3000);
      }, err => {
        console.log(err);
        this.errorMessage = err.message;
