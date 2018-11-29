@@ -14,14 +14,7 @@ import { FirebaseUserModel } from '../shared/user.model';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-// export class UserComponent implements OnInit {
 
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 export class UserComponent implements OnInit{
 
   user: FirebaseUserModel = new FirebaseUserModel();

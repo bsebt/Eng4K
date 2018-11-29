@@ -29,14 +29,4 @@ export class HomeComponent {
 }
 
 
-
-
-   // postFile(user: User){
-       // return this.http.post(environment.baseUrl+'/register',user);
- //     }
-
- //   getFile() {
-       // return this.http.get(environment.baseUrl+'/userprofile');
-  //    }
-
   

@@ -10,10 +10,7 @@ import { UserComponent } from './user/user.component';
 //import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 
-//Routing
-//import { appRoutes } from './routes';
-//import { UserProfileComponent } from './user-profile/user-profile.component';
-//import { SignInComponent } from './user/sign-in/sign-in.component';
+
 import { UserService } from './shared/user.service';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 
@@ -49,13 +46,7 @@ import { DetailsUploadComponent } from './home/details-upload/details-upload.com
     HomeComponent, UploadFileComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent //new
   ],
   imports: [
-    // AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    // BrowserModule,
-    // FormsModule,
-    // RouterModule.forRoot(appRoutes),
-    // HttpClientModule
+  
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),

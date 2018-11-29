@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { resolve } from "url";
-import { reject } from "q";
 
 @Injectable()
 export class AuthService {
@@ -39,7 +37,10 @@ export class AuthService {
 
   doLogin(value){
     return new Promise<any>((resolve, reject) => {
+      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(function(){
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+      })
       .then(res => {
         resolve(res);
       }, err => reject(err))
@@ -57,6 +58,7 @@ export class AuthService {
       }
     });
   }
+
 
   /**
    * doContact gets invoked when a user click on 'submit' on the contact us jumbotron. 
