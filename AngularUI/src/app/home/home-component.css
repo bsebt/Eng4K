@@ -1,5 +1,6 @@
 .spacer {  margin-top: 40px; }
 
+
 input, select {
     width:100%;
     border:1px solid #ccc;
@@ -21,6 +22,7 @@ text-indent: 4px;
 }
 
 body {
+/* margin: 0 !important;  */
 font: 400 15px Lato, sans-serif;
 line-height: 1.8;
 color: #818181;
@@ -130,6 +132,10 @@ font-size: 14px;
 margin: 15px 0;
 background-color: #f4511e;
 color: #fff;
+}
+
+#search {
+  text-align: start
 }
 .navbar {
   padding: 15px 10px;
