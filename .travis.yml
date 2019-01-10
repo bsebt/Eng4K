@@ -9,8 +9,8 @@ branches:
   - master
 
 before_script:
+  - cd AngularUI
   - npm install -g @angular/cli
 
 script:
-- cd AngularUI
 - ng build
