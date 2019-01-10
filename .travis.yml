@@ -13,6 +13,6 @@ addons:
 
 script:
   - npm install
-  - cd .\AngularUI\
+  - cd AngularUI
   - sudo npm install -g @angular/cli
   - ng build
