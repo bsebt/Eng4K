@@ -11,6 +11,8 @@ branches:
 before_script:
   - cd AngularUI
   - npm install -g @angular/cli
+  - ng update
+  - npm update
 
 script:
 - ng build
