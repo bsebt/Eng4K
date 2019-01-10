@@ -13,4 +13,5 @@ addons:
 
 script:
   - npm install
-  - ng build AngularUI/
+  - cd .\AngularUI\
+  - ng build
