@@ -1,11 +1,18 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
+language: node_js
+node_js:
+  - "8"
+dist: trusty
+sudo: false
 
-env:
-global:
-  - CI=true
-matrix:
-  - TEST_DOC=false
-  - TEST_DOC=true
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+script:
+  - npm run lint
+  - npm run test:headless
+  - npm run build
+  - xvfb-run npm run e2e
