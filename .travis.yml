@@ -12,5 +12,4 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-- ng lint
-- ng build --prod --nishatoma https://github.com/bsebt/Eng4K
+- ng build --prod --nishatoma https://github.com/bsebt/Eng4K/tree/master/AngularUI
