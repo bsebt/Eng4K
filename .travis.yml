@@ -12,7 +12,5 @@ addons:
   chrome: stable
 
 script:
-  - npm run lint
-  - npm run test:headless
-  - npm run build
-  - xvfb-run npm run e2e
+  - npm install
+  - ng build AngularUI/
