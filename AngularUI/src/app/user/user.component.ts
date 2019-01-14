@@ -8,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../shared/user.model';
+import { UploadFileService } from '../home/upload-file.service';
+import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-user',
@@ -19,13 +22,14 @@ export class UserComponent implements OnInit{
 
   user: FirebaseUserModel = new FirebaseUserModel();
   profileForm: FormGroup;
-
+  fileUploads: any[];
   constructor(
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
     private location : Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private uploadService: UploadFileService
   ) {
 
   }
@@ -38,6 +42,14 @@ export class UserComponent implements OnInit{
         this.createForm(this.user.name);
       }
     })
+    // Fetch the list of files.
+    this.uploadService.getFileUploads(10).snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    ).subscribe(fileUploads => {
+      this.fileUploads = fileUploads;
+    });
   }
 
   createForm(name) {

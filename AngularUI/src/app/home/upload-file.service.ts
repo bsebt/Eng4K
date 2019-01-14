@@ -54,7 +54,7 @@ export class UploadFileService {
 
   getFileUploads(numberItems): AngularFireList<FileUpload> {
     if (!this.userId) return;
-    return this.db.list(`${this.basePath}//${this.userId}`, ref =>
+    return this.db.list(`${this.basePath}/${this.userId}`, ref =>
       ref.limitToLast(numberItems));
   }
 
@@ -67,11 +67,11 @@ export class UploadFileService {
   }
 
   private deleteFileDatabase(key: string) {
-    return this.db.list(`${this.basePath}/`).remove(key);
+    return this.db.list(`${this.basePath}/${this.userId}/`).remove(key);
   }
 
   private deleteFileStorage(name: string) {
     const storageRef = firebase.storage().ref();
-    storageRef.child(`${this.basePath}/${name}`).delete();
+    storageRef.child(`${this.basePath}/${this.userId}/${name}`).delete();
   }
 }

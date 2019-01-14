@@ -271,3 +271,11 @@ margin: 25px 0;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.myfiles {
+  width: 50% !important;
+  float: right;
+  margin: 20em;
+  margin-top: 4em;
+  margin-left: 1em;
+}

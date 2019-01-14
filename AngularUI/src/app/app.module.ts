@@ -8,6 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 //import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -55,7 +56,7 @@ import { DetailsUploadComponent } from './home/details-upload/details-upload.com
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule, Ng2PageScrollModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, UserResolver, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
