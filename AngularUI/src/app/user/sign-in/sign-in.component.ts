@@ -20,7 +20,7 @@ export class LoginComponent {
 
   loginForm: FormGroup;
   contactForm: FormGroup;
-  errorMessage: string = '';
+  public errorMessage = '';
 
   constructor(
     public authService: AuthService,
@@ -57,8 +57,8 @@ export class LoginComponent {
     this.authService.doLogin(value)
     .then(res => {
       this.router.navigate(['/user']);
-    }, err => {
-      console.log(err);
+    }, err => {  
+      console.log(err.message)
       this.errorMessage = err.message;
     })
   }

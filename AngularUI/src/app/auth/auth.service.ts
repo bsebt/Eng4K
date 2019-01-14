@@ -6,6 +6,8 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
 
+  public errorMessage = '';
+
   constructor(
    public afAuth: AngularFireAuth
  ){}
@@ -32,18 +34,19 @@ export class AuthService {
       .then(res => {
         resolve(res);
       }, err => reject(err))
+    }).catch(err => {
+      this.errorMessage = err;
     })
   }
 
   doLogin(value){
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-      .then(function(){
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
-      })
       .then(res => {
         resolve(res);
-      }, err => reject(err))
+      }, err => {
+        reject(err)
+      })
     })
   }
 
