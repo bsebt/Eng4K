@@ -4,6 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/storage';
 
 import { FileUpload } from './fileupload';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,15 @@ import { FileUpload } from './fileupload';
 export class UploadFileService {
 
   private basePath = '/uploads';
+  userId: string;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.userId = user.uid;
+      }
+    })
+  }
 
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
     const storageRef = firebase.storage().ref();
@@ -41,11 +49,12 @@ export class UploadFileService {
   }
 
   private saveFileData(fileUpload: FileUpload) {
-    this.db.list(`${this.basePath}/`).push(fileUpload);
+    this.db.list(`${this.basePath}/${this.userId}`).push(fileUpload);
   }
 
   getFileUploads(numberItems): AngularFireList<FileUpload> {
-    return this.db.list(this.basePath, ref =>
+    if (!this.userId) return;
+    return this.db.list(`${this.basePath}//${this.userId}`, ref =>
       ref.limitToLast(numberItems));
   }
 
