@@ -1,0 +1,29 @@
+.current {
+    position: absolute;
+    color: #000;
+    font-weight: 100;
+    line-height: 5;
+    margin-left: 1.3em;
+    text-align: center !important;
+}
+
+.progress-wrapper {
+    position: relative;
+    margin: 20px auto;
+    margin-left: 25px auto;
+    font-size: 40px;
+}
+
+.upload-label {
+    margin-right: 20em !important;
+}
+
+.container {
+    margin-left: 4em;
+}
+
+h3 {
+    position: absolute;
+    text-align: center;
+    color: #000;
+}

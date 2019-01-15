@@ -1,14 +1,42 @@
-<div *ngIf="currentFileUpload" class="progress">
-	<div class="progress-bar progress-bar-info progress-bar-striped"
-		role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
-		aria-valuemin="0" aria-valuemax="100"
-		[ngStyle]="{width:progress.percentage+'%'}">
-		{{progress.percentage}}%</div>
+
+<div *ngIf="currentFileUpload">
+	<div class="container">
+		<div *ngIf="progress.percentage < 100; else complete">
+				<div class="progress-wrapper">
+						<div class="current">{{progress.percentage}} %</div>
+						<round-progress
+						[current]="progress.percentage"
+						[max]="100"
+						[color]="'#f4511e'"
+						[background]="'#eaeaea'"
+						[radius]="100"
+						[stroke]="5"
+						[semicircle]="false"
+						[rounded]="false"
+						[clockwise]="false"
+						[responsive]="false"
+						[duration]="800"
+						[animation]="'linearEase'"
+						[animationDelay]="100"></round-progress>
+				</div>
+		</div>
+		<ng-template #complete>
+			<h3>
+				Upload complete!
+			</h3>
+		</ng-template>
+		<br>
+		<br>
+	</div>	
 </div>
- 
-<label class="btn btn-default"> <input type="file"
-	(change)="selectFile($event)" accept=".pdf">
-</label>
- 
-<button class="btn btn-success" [disabled]="!selectedFiles"
-	(click)="upload()">Upload</button>
+
+<br>
+	
+<div class="upload-label">
+		<label class="btn btn-default"> <input type="file"
+			(change)="selectFile($event)" accept=".pdf">
+		</label>
+			
+		<button class="btn btn-success" [disabled]="!selectedFiles"
+			(click)="upload()">Upload</button>
+</div>

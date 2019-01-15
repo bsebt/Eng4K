@@ -36,6 +36,8 @@ import { UploadFileComponent } from './home/upload-file/upload-file.component';
 import { FormUploadComponent } from './home/form-upload/form-upload.component';
 import { ListUploadComponent } from './home/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './home/details-upload/details-upload.component';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { DetailsUploadComponent } from './home/details-upload/details-upload.com
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    AngularFireDatabaseModule, Ng2PageScrollModule
+    AngularFireDatabaseModule, Ng2PageScrollModule,
+    RoundProgressModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
