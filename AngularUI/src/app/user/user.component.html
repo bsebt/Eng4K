@@ -42,12 +42,7 @@
     </nav>
 
     <div class="panel panel-primary myfiles">
-      <div class="panel-heading">List of Files</div>
-      <div *ngFor="let file of fileUploads">
-        <div class="panel-body">
-          <details-upload [fileUpload]='file'></details-upload>
-        </div>
-      </div>
+      <list-upload></list-upload>
     </div>
 
     

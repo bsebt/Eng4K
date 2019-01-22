@@ -1,8 +1,15 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">List of Files</div>
-  <div *ngFor="let file of fileUploads">
-    <div class="panel-body">
-      <details-upload [fileUpload]='file'></details-upload>
-    </div>
+  <div *ngIf="fileUploads.length > 0; else show_empty">
+      <div class="panel-heading">List of Files</div>
+      <div *ngFor="let file of fileUploads">
+          <div class="panel-body">
+            <details-upload [fileUpload]='file'></details-upload>
+          </div>
+      </div>
   </div>
-</div>
+  <ng-template #show_empty>
+    <div>
+      <div>You have no files uploaded yet.</div>
+      <button class="btn btn-danger btn-xl myupload" onclick="location.href='../#/home'" type="button">
+        File Upload</button>
+    </div>
+  </ng-template>

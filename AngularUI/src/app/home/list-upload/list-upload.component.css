@@ -1,0 +1,10 @@
+.myupload {
+    color: white !important;
+    text-decoration-color: #f4511e !important;
+    background-color: #f4511e !important;
+}
+
+button:hover {
+    background: white !important;
+    color: #f4511e !important;
+}
