@@ -42,6 +42,7 @@ export class UploadFileService {
           console.log('File available at', downloadURL);
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
+          fileUpload.size = fileUpload.file.size;
           this.saveFileData(fileUpload);
         });
       }
