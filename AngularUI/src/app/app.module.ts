@@ -32,7 +32,6 @@ import { RegisterComponent } from './user/sign-up/sign-up.component';
 import { UserResolver } from './user/user.resolver';
 import { AuthService } from './auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UploadFileComponent } from './home/upload-file/upload-file.component';
 import { FormUploadComponent } from './home/form-upload/form-upload.component';
 import { ListUploadComponent } from './home/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './home/details-upload/details-upload.component';
@@ -46,7 +45,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     RegisterComponent, //SignUpComponent,
     //UserProfileComponent,
     LoginComponent,//SignInComponent,
-    HomeComponent, UploadFileComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent //new
+    HomeComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent //new
   ],
   imports: [
   
