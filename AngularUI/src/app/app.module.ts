@@ -36,6 +36,12 @@ import { FormUploadComponent } from './home/form-upload/form-upload.component';
 import { ListUploadComponent } from './home/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './home/details-upload/details-upload.component';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import {MatDialogModule} from '@angular/material';
+import { DialogDemoComponent } from './dialog-demo/dialog-demo.component';
+import {MatCardModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+//import {BrowserAnimationsModule} from '@angular/material';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
 
 
 @NgModule({
@@ -45,7 +51,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     RegisterComponent, //SignUpComponent,
     //UserProfileComponent,
     LoginComponent,//SignInComponent,
-    HomeComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent //new
+    HomeComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent, DialogDemoComponent, MyDialogComponent //new
   ],
   imports: [
   
@@ -56,7 +62,13 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule, Ng2PageScrollModule,
-    RoundProgressModule
+    RoundProgressModule,
+    MatDialogModule,
+   // BrowserModule,
+    //BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
