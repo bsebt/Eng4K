@@ -39,28 +39,38 @@
     </nav>
 
     
-    <div class="row">    
-        <div class="col-sm-4"></div>
-  <div class="col-sm-8">
+   
     
-  <div class="container-fluid">
+  <!-- <div class="container-fluid">
     <br/>
     <br/>
     <form-upload></form-upload>
-    </div>
-    </div>
+    </div> -->
+        <div class="container-fluid"> </div>
+
+    <div class="container-fluid"> 
+    <mat-tab-group>
+
+      <mat-tab label="File Upload"> <form-upload></form-upload> </mat-tab>
+      <mat-tab label="View Uploaded Files"> <list-upload></list-upload> </mat-tab>
+    
+  </mat-tab-group>
   </div>
 
-  <div class="sidenav">
+
+   
+ 
+
+ <!--  <div class="sidenav">
       <a href="../#/home">File Upload</a>
       <a href="../#/user">My Files</a>
       <a href="#">Settings</a>
       <a href="#">My Account</a>
       <a href="#">FAQ</a>
     </div>
+ -->
 
-
-  <a routerLink="../#/user"><button class="btn btn-primary" > Go Back </button></a>
+  <!-- <a routerLink="../#/user"><button class="btn btn-primary" > Go Back </button></a> -->
 
 </body>
 

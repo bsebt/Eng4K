@@ -14,6 +14,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { UserService } from './shared/user.service';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 // Authentication - will prob have to remove
 import { AuthGuard } from './auth/auth.guard';
@@ -56,7 +59,10 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule, Ng2PageScrollModule,
-    RoundProgressModule
+    RoundProgressModule,
+    MatToolbarModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService, UserService, UserResolver, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
