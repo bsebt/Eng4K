@@ -1,9 +1,7 @@
 // built-in imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 // components
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -30,8 +28,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './user/sign-in/sign-in.component';
-import { RegisterComponent } from './user/sign-up/sign-up.component';
+import { LoginComponent } from './auth/sign-in/sign-in.component';
+import { RegisterComponent } from './auth/sign-up/sign-up.component';
 import { UserResolver } from './user/user.resolver';
 import { AuthService } from './auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';

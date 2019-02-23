@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { UserComponent } from './user/user.component';
-import { RegisterComponent } from './user/sign-up/sign-up.component';
-import { LoginComponent } from './user/sign-in/sign-in.component';
+import { RegisterComponent } from './auth/sign-up/sign-up.component';
+import { LoginComponent } from './auth/sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserResolver } from './user/user.resolver';
 import { HomeComponent } from './home/home-component';

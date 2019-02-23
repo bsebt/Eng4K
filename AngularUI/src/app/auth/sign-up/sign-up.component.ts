@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
-import { UserService } from '../../shared/user.service'
-
+import { Component } from '@angular/core';
 
 //Firebase
 import { AuthService } from '../../auth/auth.service';
-import { Router, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
