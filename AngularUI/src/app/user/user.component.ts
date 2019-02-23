@@ -8,9 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseUserModel } from '../shared/user.model';
-import { UploadFileService } from '../home/upload-file.service';
+import { UploadFileService } from '../upload/upload-file.service';
 import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-user',

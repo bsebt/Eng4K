@@ -33,9 +33,9 @@ import { RegisterComponent } from './auth/sign-up/sign-up.component';
 import { UserResolver } from './user/user.resolver';
 import { AuthService } from './auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormUploadComponent } from './home/form-upload/form-upload.component';
-import { ListUploadComponent } from './home/list-upload/list-upload.component';
-import { DetailsUploadComponent } from './home/details-upload/details-upload.component';
+import { FormUploadComponent } from './upload/form-upload/form-upload.component';
+import { ListUploadComponent } from './upload/list-upload/list-upload.component';
+import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 
