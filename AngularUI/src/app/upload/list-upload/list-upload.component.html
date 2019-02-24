@@ -1,15 +1,62 @@
-  <div *ngIf="fileUploads.length > 0; else show_empty">
-      <div class="panel-heading">List of Files</div>
-      <div *ngFor="let file of fileUploads">
-          <div class="panel-body">
-            <details-upload [fileUpload]='file'></details-upload>
-          </div>
-      </div>
-  </div>
-  <ng-template #show_empty>
-    <div>
-      <div>You have no files uploaded yet.</div>
-      <button class="btn btn-danger btn-xl myupload" onclick="location.href='../#/home'" type="button">
-        File Upload</button>
+<div class="container">
+  <!----------------------------->
+  <!-- Search Form. -->
+  <!----------------------------->
+  <div class="row">
+    <div class="col-xs-12">
+        <div class="form-group filter-wrapper">
+          <input [(ngModel)]="searchTerm"
+            type="text" 
+            placeholder="Search for files..." 
+            class="form-control keyword-wrapper" 
+            id="keyword"/>
+        </div>
     </div>
-  </ng-template>
+  </div>
+  <br>
+  <br>
+  <!----------------------------->
+  <!-- Populate list of files. -->
+  <!----------------------------->
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngIf="areFilesAvailable(); else show_empty">
+          <!-- <div class="panel-heading">List of Files</div> -->
+          <ng-container *ngIf="(fileUploads | fileFilter:searchTerm) as result">
+            <div *ngFor="let file of result">
+              <div class="panel-body">
+                <details-upload [fileUpload]='file'></details-upload>
+              </div>
+            </div>
+            <div *ngIf="!result.length">
+              <br>  
+              <h1>No file named "{{searchTerm}}" found :(</h1>
+            </div>
+          </ng-container>
+      </div>
+    </div>
+  </div>
+  <!-- ----------------------------------- -->
+  <!-- Empty page when there are no files. -->
+  <!-- ----------------------------------- -->
+  <div class="row">
+    <div class="col-xs-12">
+      <ng-template #show_empty>
+        <div>
+          <div>
+            <h4>
+              You have no files uploaded yet.
+            </h4>
+          </div>
+          <br>
+          <button 
+            class="btn btn-danger btn-xl myupload" 
+            routerLink="/upload" 
+            type="button">
+            Upload some files
+          </button>
+        </div>
+    </ng-template>
+    </div>
+  </div>
+</div>

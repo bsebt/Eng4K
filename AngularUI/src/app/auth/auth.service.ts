@@ -1,16 +1,19 @@
 import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService {
 
   public errorMessage = '';
+  // JWT to check if the user is authenticated
+  token: string = '';
 
   constructor(
-   public afAuth: AngularFireAuth
- ){}
+    public afAuth: AngularFireAuth,
+      private router: Router){}
 
   doGoogleLogin(){
     return new Promise<any>((resolve, reject) => {
@@ -28,56 +31,58 @@ export class AuthService {
     })
   }
 
-  doRegister(value){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        resolve(res);
-      }, err => reject(err))
-    }).catch(err => {
-      this.errorMessage = err;
-    })
-  }
-
-  doLogin(value){
-    return new Promise<any>((resolve, reject) => {
-      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
-      .then(res => {
-        resolve(res);
-      }, err => {
-        reject(err)
-      })
-    })
-  }
-
-  doLogout(){
-    return new Promise((resolve, reject) => {
-      if(firebase.auth().currentUser){
-        this.afAuth.auth.signOut()
-        resolve();
+  signupUser(email: string, password: string) {
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(
+      (res) => {
+        this.logout();
       }
-      else{
-        reject();
-      }
-    });
+    )
+    .catch(
+        (error) => {
+            console.log(error);
+        }
+    );
   }
 
+  signInUser(email: string, password: string) {
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(
+          (response) => {
+              console.log(response);
+              this.setToken();
+              this.router.navigate(['/']);
+          }
+      ).catch(
+          (error) => {
+              console.log(error);
+          }
+      );
+  }
 
-  /**
-   * doContact gets invoked when a user click on 'submit' on the contact us jumbotron. 
-   * The method will take the email, name and comments and store it in the 'messages'
-   * set on firebase.
-   * @param value 
-   */
-  doContact(value) {
-    return new Promise<any> ((resolve, reject) => {
-      var messagesRef = firebase.database().ref('messages');
-      var newMessageRef = messagesRef.push();
-      newMessageRef.set({
-        name: value.name,
-        comments: value.comments,
-        email: value.email
-      });
-    });
+  getToken() {
+      // This is an asynchronous action.
+      this.setToken();
+      return this.token;
+  }
+
+  setToken() {
+      firebase.auth().currentUser.getIdToken().then(
+          (token) => {
+              this.token = token;
+              console.log(this.token);
+              console.log(this.isAuthenticated());
+          }
+      );
+  }
+
+  isAuthenticated() {
+      return (firebase.auth().currentUser != null);
+  }
+
+  logout() {
+    firebase.auth().signOut();
+    this.token = null;
+    this.router.navigate(['../login']);
   }
 }

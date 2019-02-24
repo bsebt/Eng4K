@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 //Firebase
 import { AuthService } from '../../auth/auth.service'
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -16,34 +16,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: 'sign-in.component.html',
   styleUrls: ['sign-in.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  contactForm: FormGroup;
   public errorMessage = '';
 
-  constructor(
-    public authService: AuthService,
-    private router: Router,
-    private fb: FormBuilder
-  ) {
-    this.createForm();
-    this.createContact();
+  constructor(public authService: AuthService, private router: Router) {
   }
 
-  createForm() {
-    this.loginForm = this.fb.group({
-      email: ['', Validators.required ],
-      password: ['',Validators.required]
-    });
-  }
-
-  createContact() {
-    this.contactForm = this.fb.group({
-      email: ['', Validators.required],
-      name: [''],
-      comments: ['']
-    });
+  ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/home']);
+    }
   }
 
   tryGoogleLogin(){
@@ -53,22 +36,7 @@ export class LoginComponent {
     })
   }
 
-  tryLogin(value){
-    this.authService.doLogin(value)
-    .then(res => {
-      this.router.navigate(['/home']);
-    }, err => {  
-      console.log(err.message)
-      this.errorMessage = err.message;
-    })
-  }
-
-  tryContact(value) {
-    this.authService.doContact(value)
-    .then(res => {
-       
-    }, err => {
-     console.log(err);
-    })
+  tryLogin(form: NgForm){
+    this.authService.signInUser(form.value.email, form.value.password);
   }
 }

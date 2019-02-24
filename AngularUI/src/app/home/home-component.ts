@@ -1,18 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { FirebaseUserModel } from '../shared/user.model';
-import { environment } from '../../environments/environment';
-
-import { Component, OnInit } from '@angular/core';
-
-
-//Firebase
-import { UserService } from '../shared/user.service';
-import { AuthService } from '../auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-
-
-
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -21,11 +7,6 @@ import { Location } from '@angular/common';
   })
 
 export class HomeComponent {
-  title = 'JavaSampleApproach';
-  description = 'Angular-Firebase Demo';
-
-
-
 }
 
 

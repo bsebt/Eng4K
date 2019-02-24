@@ -53,10 +53,10 @@ export class UploadFileService {
     this.db.list(`${this.basePath}/${this.userId}`).push(fileUpload);
   }
 
-  getFileUploads(numberItems): AngularFireList<FileUpload> {
+  getFileUploads(numberItems): AngularFireList<any> {
     if (!this.userId) return;
     return this.db.list(`${this.basePath}/${this.userId}`, ref =>
-      ref.limitToLast(numberItems));
+      ref.limitToFirst(numberItems));
   }
 
   deleteFileUpload(fileUpload: FileUpload) {

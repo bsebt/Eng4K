@@ -4,11 +4,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 // components
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
 //import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
-
 
 import { UserService } from './shared/user.service';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
@@ -30,23 +27,32 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './auth/sign-in/sign-in.component';
 import { RegisterComponent } from './auth/sign-up/sign-up.component';
-import { UserResolver } from './user/user.resolver';
 import { AuthService } from './auth/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { HeaderComponent } from './core/header/header.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
+// Font awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FileFilterPipe } from './shared/file-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
     RegisterComponent, //SignUpComponent,
     //UserProfileComponent,
     LoginComponent,//SignInComponent,
-    HomeComponent, FormUploadComponent, ListUploadComponent, DetailsUploadComponent //new
+    HomeComponent,
+    FormUploadComponent, 
+    ListUploadComponent, 
+    DetailsUploadComponent, 
+    HeaderComponent,
+    DropdownDirective,
+    FileFilterPipe
   ],
   imports: [
   
@@ -60,9 +66,11 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     RoundProgressModule,
     MatToolbarModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    FontAwesomeModule
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AuthService, UserService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

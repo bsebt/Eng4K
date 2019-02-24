@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UploadFileService } from '../upload-file.service';
 import { FileUpload } from '../fileupload';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'form-upload',

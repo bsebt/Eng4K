@@ -1,247 +1,68 @@
-
-<!DOCTYPE html>
-<html lang="en">
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
-<head>
-  <title>Bootstrap Theme Company Page</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  
-
-  </head>
-  <body id="myPage" data-target=".navbar">
-  
-  <nav class="navbar navbar-default navbar-fixed-top">
-    
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="#myPage">TagAI</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a pageScroll href="#about">ABOUT</a></li>
-          <li><a pageScroll href="#services">SERVICES</a></li>
-          <li><a pageScroll href="#contact">CONTACT</a></li>
-        </ul>
-      </div>
-    
-  </nav>
-
-  <div class="jumbotron text-center container-fluid">
-    <h1>tagAI</h1>
-    <p>Your documents are ready for AI</p>
-    <form [formGroup]="loginForm">
-
-      <div class="col-md-4 col-md-offset-4">
-        <label>Access your account</label>
-        <div class="text-center">
-            <input type="email" id="email" class="form-control text-center" formControlName="email" placeholder="Email Address"
-            required>
+<form (ngSubmit)="tryLogin(f)" #f="ngForm">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <strong>
+                <h1>
+                    Sign in
+                </h1>
+            </strong>   
         </div>
-        <div style="margin-top:2px">
-            <input type="password" id="password" class="form-control text-center" formControlName="password" placeholder="Password"
-            required>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h4>to your TagAI account</h4>
         </div>
-        <label>{{errorMessage}}</label>
-      </div>    
-    </form>
-    
-    
-
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-          <button type="submit" (click)="tryLogin(loginForm.value)" class="btn btn-danger">Login</button>
-        <button type="button" class="btn btn-danger" (click)="tryGoogleLogin()">Login with Google</button>
-      </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <p>No account yet? <a href="../#/register" style="color:black;">Create an account</a></p>
-      </div>
-    </div>
-  </div>
-  <div id="about" class="container-fluid">
-    <div class="row">
-      <div class="col-sm-8">
-        <h2>About Our Company</h2>
-        <h4>Capstone Project</h4>
-        <p>Constantly working on updating our system</p>
-        <button class="btn btn-default btn-lg">Get in Touch</button>
-      </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-signal logo"></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-fluid bg-grey">
-    <div class="row">
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-globe logo"></span>
-      </div>
-      <div class="col-sm-8">
-        <h2>Our Values</h2>
-        <h4><strong>MISSION:</strong> Our mission is to analyize documents using AI</h4>
-        <p><strong>VISION:</strong> is to become the future of data anyalytics
-      </div>
-    </div>
-  </div>
-
-  <div id="services" class="container-fluid text-center bg-grey">
-    <h2>SERVICES</h2>
-    <h4>What we offer</h4>
     <br>
     <div class="row">
-      <div class="col-sm-3">
-        <span class="glyphicon glyphicon-off logo-small"></span>
-        <h4>POWER</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-3">
-        <span class="glyphicon glyphicon-heart logo-small"></span>
-        <h4>LOVE</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-3">
-        <span class="glyphicon glyphicon-lock logo-small"></span>
-        <h4>JOB DONE</h4>
-        <p>Lorem ipsum dolor sit amet..</p>
-      </div>
-      <div class="col-sm-3">
-          <span class="glyphicon glyphicon-lock logo-small"></span>
-          <h4>A 4th THING</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    ngModel 
+                    class="form-control" 
+                    placeholder="Email"
+                    required>
+            </div>
         </div>
     </div>
-    <br><br>
-  </div>
-  
-  
-  <div class="container-fluid text-center bg-grey">
-
-
-    <h2>What our customers say</h2>
-    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <h4>"This company is the best. I am so happy with the result!"<br><span>Yash, Student
-            </span></h4>
-        </div>
-        <div class="item">
-          <h4>"One word... WOW!!"<br><span>Anton, Queens Law</span></h4>
-        </div>
-        <div class="item">
-          <h4>"Could I... BE any more happy with this company?"<br><span>Vlad, Merchant</span></h4>
-        </div>
-      </div>
-
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-
-  <div id="contact" class="container-fluid bg-grey">
-    <h2 class="text-center">CONTACT</h2>
     <div class="row">
-      <div class="col-sm-5">
-        <p>Contact us and we'll get back to you within 24 hours.</p>
-        <p><span class="glyphicon glyphicon-map-marker"></span> Toronto, ON</p>
-        <p><span class="glyphicon glyphicon-phone"></span> (416) 258-7513</p>
-        <p><span class="glyphicon glyphicon-envelope"></span> tagAI@contact.ca</p>
-      </div>
-      <form [formGroup]="contactForm">
-
-      
-      <div class="col-sm-7">
-        <div class="row">
-          <div class="col-sm-6 form-group">
-            <input class="form-control" formControlName="name" id="name" name="name" placeholder="Name" type="email" required>
-          </div>
-          <div class="col-sm-6 form-group">
-            <input class="form-control" id="email" formControlName="email" name="email" placeholder="Email" type="email" required>
-          </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    ngModel 
+                    class="form-control" 
+                    placeholder="Password"
+                    required>
+            </div>
         </div>
-        <textarea class="form-control" id="comments" formControlName="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-        <div class="row">
-          <div class="col-sm-12 form-group">
-            <button class="btn btn-default pull-right" (click)="tryContact(contactForm.value)" type="submit">Send</button>
-          </div>
-        </div>
-      </div>
-    </form>
     </div>
-  </div>
-
-  <img src ="../../../assets/map.jpg" class="img-responsive" style="width:100%">
-
-  <footer class="container-fluid text-center">
-    <a pageScroll href="#myPage" title="To Top">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-  </footer>
-
-  <script>
-      $(document).ready(function(){
-        // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-          // Make sure this.hash has a value before overriding default behavior
-          if (this.hash !== "") {
-            // Prevent default anchor click behavior
-            event.preventDefault();
-      
-            // Store hash
-            var hash = this.hash;
-      
-            // Using jQuery's animate() method to add smooth page scroll
-            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-            $('html, body').animate({
-              scrollTop: $(hash).offset().top
-            }, 900, function(){
-         
-              // Add hash (#) to URL when done scrolling (default click behavior)
-              window.location.hash = hash;
-            });
-          } // End if
-        });
-        
-        $(window).scroll(function() {
-          $(".slideanim").each(function(){
-            var pos = $(this).offset().top;
-      
-            var winTop = $(window).scrollTop();
-              if (pos < winTop + 600) {
-                $(this).addClass("slide");
-              }
-          });
-        });
-      })
-      </script>
-</body>
-
-</html>
+    <button 
+        class="btn btn-primary signup" 
+        type="submit" 
+        [disabled]="!f.valid"> 
+        Sign In
+    </button>
+    <br>
+    <br>
+    <div class="strike">
+        <span>OR</span>
+    </div>
+    <br>
+    <!-- <button type="button" class="btn btn-success signup" >
+        <i class="icon-circle-arrow-right icon-large"></i> Next
+    </button> -->
+    <button type="button" class="google-button btn btn-default signup" (click)="tryGoogleLogin()">
+        <span class="google-button__icon google-button__icon--plus">
+            <svg viewBox="0 0 93 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.12 28.862C.375 13.725 14.29.47 29.428.974c7.253-.337 14.07 2.82 19.626 7.252-2.37 2.694-4.826 5.29-7.45 7.716-6.677-4.615-16.174-5.934-22.852-.603-9.552 6.606-9.987 22.206-.798 29.318 8.936 8.11 25.826 4.083 28.295-8.333-5.597-.084-11.21 0-16.806-.182-.013-3.34-.027-6.678-.013-10.016 9.357-.028 18.714-.043 28.085.028.56 7.856-.477 16.217-5.303 22.712-7.31 10.283-21.983 13.285-33.43 8.88C7.29 53.37-.848 41.235.12 28.862zm75.643-11.167h8.347c.014 2.792.028 5.598.056 8.39 2.792.028 5.598.028 8.39.056v8.348c-2.792.028-5.584.042-8.39.07-.028 2.805-.042 5.597-.056 8.39h-8.36c-.03-2.793-.03-5.585-.057-8.376l-8.39-.084V26.14c2.793-.027 5.584-.04 8.39-.056.014-2.805.042-5.597.07-8.39z" fill="#DC4E41"/>
+            </svg>
+        </span>
+        <span class="google-button__text">Sign in with Google</span>
+    </button>
+</form>

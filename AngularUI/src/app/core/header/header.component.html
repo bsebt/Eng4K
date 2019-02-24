@@ -1,0 +1,36 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand ptr" routerLink="/">
+            Tag AI
+          </a>
+      </div>
+      <div class="navbar-default">
+          <ul class="nav navbar-nav" *ngIf="isAuthenticated()">
+              <li routerLinkActive="active">
+                <a class="ptr" routerLink="/files">My Files</a>
+              </li>
+              <li routerLinkActive="active">
+                <a class="ptr" routerLink="/upload">Upload Files</a>
+              </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">  
+            <li routerLinkActive="active">
+              <a class="ptr" routerLink="/login"  *ngIf="!isAuthenticated()">
+                Log In
+              </a>
+            </li>
+            <li routerLinkActive="active">
+              <a class="ptr" routerLink="/register" *ngIf="!isAuthenticated()">
+                Register
+              </a>
+            </li>
+            <li>
+              <a class="ptr" (click)="logOut()" *ngIf="isAuthenticated()">
+                Log out
+              </a>
+            </li>
+          </ul>
+      </div>
+  </div>
+</nav>
