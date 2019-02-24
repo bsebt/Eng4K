@@ -37,7 +37,6 @@ import { HeaderComponent } from './core/header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 
 // Font awesome
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FileFilterPipe } from './shared/file-filter.pipe';
 
 @NgModule({
@@ -67,8 +66,7 @@ import { FileFilterPipe } from './shared/file-filter.pipe';
     MatToolbarModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    FormsModule,
-    FontAwesomeModule
+    FormsModule
   ],
   providers: [AuthService, UserService, AuthGuard, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
