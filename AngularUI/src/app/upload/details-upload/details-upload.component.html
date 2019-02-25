@@ -1,2 +1,22 @@
-<a href="{{fileUpload.url}}" style="color:black;">{{fileUpload.name}}</a>
-<button (click)='deleteFileUpload(fileUpload)' class="btn btn-danger btn-xs" style="float: right">Delete</button>
+<div class="container-fluid card">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>
+                {{fileUpload.name}}
+            </h2>
+            <hr>
+            <h4>{{getFileSize()}}</h4>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="{{fileUpload.url}}" class="btn btn-primary">
+                        View
+                    </a>
+                    <button class="btn btn-danger" (click)="deleteFileUpload(fileUpload)">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
