@@ -3,11 +3,13 @@ import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { Router } from "@angular/router";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class AuthService {
 
-  public errorMessage = '';
+  public signUpErrorMessage: Subject<string> = new Subject<string>();
+  public loginErrorMessage: Subject<string> = new Subject<string>(); 
   // JWT to check if the user is authenticated
   token: string = '';
 
@@ -41,6 +43,7 @@ export class AuthService {
     .catch(
         (error) => {
             console.log(error);
+            this.signUpErrorMessage.next(error.message);
         }
     );
   }
@@ -56,6 +59,7 @@ export class AuthService {
       ).catch(
           (error) => {
               console.log(error);
+              this.loginErrorMessage.next(error.message);
           }
       );
   }

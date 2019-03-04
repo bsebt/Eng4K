@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // Inject the router
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service'
 
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 
 
@@ -16,9 +17,10 @@ import { NgForm } from '@angular/forms';
   templateUrl: 'sign-in.component.html',
   styleUrls: ['sign-in.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  public errorMessage = '';
+  public errorMessage: string;
+  messageSubscription: Subscription;
 
   constructor(public authService: AuthService, private router: Router) {
   }
@@ -27,6 +29,14 @@ export class LoginComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/home']);
     }
+
+    this.messageSubscription = this.authService.loginErrorMessage.subscribe((msg) => {
+      this.errorMessage = msg;
+    });
+  }
+
+  ngOnDestroy() {
+    this.messageSubscription.unsubscribe();
   }
 
   tryGoogleLogin(){

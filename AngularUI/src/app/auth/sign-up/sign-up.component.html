@@ -37,6 +37,11 @@
             </div>
         </div>
     </div>
+    <div class="row" *ngIf="errorMessage !== undefined">
+        <div class="col-xs-12">
+            <p>{{ errorMessage }}</p>
+        </div>
+    </div>
     <br>
     <br>
     <button class="btn btn-success signup" type="submit">
