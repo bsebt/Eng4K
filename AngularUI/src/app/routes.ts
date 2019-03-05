@@ -13,7 +13,7 @@ export const rootRouterConfig: Routes = [
     { path: 'home', component: HomeComponent}, //new
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent },
-    { path: 'user', component: UserComponent},
+    { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
     { path: 'files', component: ListUploadComponent, canActivate: [AuthGuard]},
     { path: 'upload', component: FormUploadComponent, canActivate: [AuthGuard]},
 ];
