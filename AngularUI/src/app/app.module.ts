@@ -38,6 +38,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 
 // Font awesome
 import { FileFilterPipe } from './shared/file-filter.pipe';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FileFilterPipe } from './shared/file-filter.pipe';
     DetailsUploadComponent, 
     HeaderComponent,
     DropdownDirective,
-    FileFilterPipe
+    FileFilterPipe,
+    UserComponent
   ],
   imports: [
   

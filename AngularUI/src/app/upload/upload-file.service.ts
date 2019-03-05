@@ -31,6 +31,7 @@ export class UploadFileService {
         // in progress
         const snap = snapshot as firebase.storage.UploadTaskSnapshot;
         progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+        
       },
       (error) => {
         // fail
