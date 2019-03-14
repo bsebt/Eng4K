@@ -10,30 +10,36 @@ import { AngularFireAuth } from 'angularfire2/auth';
   providedIn: 'root'
 })
 export class UploadFileService {
-
   private basePath = '/uploads';
   userId: string;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(
+    private db: AngularFireDatabase,
+    private afAuth: AngularFireAuth
+  ) {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userId = user.uid;
       }
-    })
+    });
   }
 
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
     const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
+    const uploadTask = storageRef
+      .child(`${this.basePath}/${this.userId}/${fileUpload.file.name}`)
+      .put(fileUpload.file);
 
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) => {
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      snapshot => {
         // in progress
         const snap = snapshot as firebase.storage.UploadTaskSnapshot;
-        progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
-        
+        progress.percentage = Math.round(
+          (snap.bytesTransferred / snap.totalBytes) * 100
+        );
       },
-      (error) => {
+      error => {
         // fail
         console.log(error);
       },
@@ -57,7 +63,8 @@ export class UploadFileService {
   getFileUploads(numberItems): AngularFireList<any> {
     if (!this.userId) return;
     return this.db.list(`${this.basePath}/${this.userId}`, ref =>
-      ref.limitToFirst(numberItems));
+      ref.limitToFirst(numberItems)
+    );
   }
 
   deleteFileUpload(fileUpload: FileUpload) {
