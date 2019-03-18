@@ -5,6 +5,7 @@ import 'firebase/storage';
 
 import { FileUpload } from './fileupload';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,7 @@ export class UploadFileService {
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
           fileUpload.size = fileUpload.file.size;
+          fileUpload.date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
           this.saveFileData(fileUpload);
         });
       }
