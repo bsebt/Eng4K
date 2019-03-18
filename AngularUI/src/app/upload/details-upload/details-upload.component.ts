@@ -11,6 +11,9 @@ export class DetailsUploadComponent implements OnInit {
 
   @Input() fileUpload: FileUpload;
 
+  isFiledEdited: boolean = false;
+  newFileName: string;
+
   // Bytes to KB and MB
   static readonly ONE_KB = 1024;
   static readonly ONE_MB = Math.pow(DetailsUploadComponent.ONE_KB, 2);
@@ -18,6 +21,7 @@ export class DetailsUploadComponent implements OnInit {
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit() {
+    this.detectFileChanges();
   }
 
   deleteFileUpload(fileUpload) {
@@ -38,5 +42,21 @@ export class DetailsUploadComponent implements OnInit {
       result = size.toFixed(2).toString().concat(' MB');
     }
     return result;
+  }
+
+  detectFileChanges() {
+    // To access the variable within the listener
+    let self = this;
+    let title = document.getElementById("editName");
+    
+    title.addEventListener("input", function() {
+      self.isFiledEdited = true;
+      self.newFileName = title.innerHTML.toString().trim();
+    }, true);
+  }
+
+  renameFile(fileUpload) {
+    this.isFiledEdited = false;
+    this.uploadService.renameFileUpload(fileUpload, this.newFileName);
   }
 }

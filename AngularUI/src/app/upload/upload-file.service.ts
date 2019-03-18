@@ -83,4 +83,8 @@ export class UploadFileService {
     const storageRef = firebase.storage().ref();
     storageRef.child(`${this.basePath}/${this.userId}/${name}`).delete();
   }
+
+  renameFileUpload(fileUpload: FileUpload, newName: string) {
+    this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {name: newName});
+  }  
 }
