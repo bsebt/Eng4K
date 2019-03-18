@@ -48,15 +48,23 @@ export class DetailsUploadComponent implements OnInit {
     // To access the variable within the listener
     let self = this;
     let title = document.getElementById("editName");
-    
+
     title.addEventListener("input", function() {
       self.isFiledEdited = true;
-      self.newFileName = title.innerHTML.toString().trim();
+      self.newFileName = title.innerHTML.toString().replace(/&nbsp;/g, ' ').trim();
     }, true);
+
+    // Prevent user from adding a new line.
+    title.addEventListener('keypress', (e) => {
+      if (e.which === 13) e.preventDefault();
+    });
   }
 
   renameFile(fileUpload) {
     this.isFiledEdited = false;
+
+    let title = document.getElementById("editName");
+    title.innerHTML = this.newFileName;
     this.uploadService.renameFileUpload(fileUpload, this.newFileName);
   }
 }

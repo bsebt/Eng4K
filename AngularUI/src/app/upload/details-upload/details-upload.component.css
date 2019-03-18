@@ -7,3 +7,7 @@
 a, button {
     margin-right: 0.1em;
 }
+
+#editName {
+    display: inline-block;
+}
