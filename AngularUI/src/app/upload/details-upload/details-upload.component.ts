@@ -51,7 +51,7 @@ export class DetailsUploadComponent implements OnInit {
 
     title.addEventListener("input", function() {
       self.isFiledEdited = true;
-      self.newFileName = title.innerHTML.toString().replace(/&nbsp;/g, ' ').trim();
+      self.newFileName = title.innerHTML.toString().replace(/&nbsp;/g, '').trim();
     }, true);
 
     // Prevent user from adding a new line.
