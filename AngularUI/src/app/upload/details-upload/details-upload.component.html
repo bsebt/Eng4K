@@ -1,9 +1,11 @@
 <div class="container-fluid card">
     <div class="row">
         <div class="col-xs-12">
-            <h2 contenteditable="true" class="editName" spellcheck="false" (click)="detectFileChanges()">
-                {{fileUpload.name}}
-            </h2>
+            <h4 contenteditable="true" class="editName" spellcheck="false" (click)="detectFileChanges()">
+                <strong>
+                    {{fileUpload.name}}
+                </strong>
+            </h4>
             <hr>
             <h4>Size: {{getFileSize()}}</h4>
             <hr>

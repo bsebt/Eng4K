@@ -6,8 +6,13 @@
 
 a, button {
     margin-right: 0.1em;
+    margin-top: 0.4em;
 }
 
-#editName {
+.editName {
     display: inline-block;
+}
+
+hr {
+    margin: 0;
 }
