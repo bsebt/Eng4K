@@ -28,7 +28,7 @@ export class UploadFileService {
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef
-      .child(`${this.basePath}/${this.userId}/${fileUpload.key}/${fileUpload.file.name}`)
+      .child(`${this.basePath}/${this.userId}/${fileUpload.file.name}`) ///${fileUpload.key}
       .put(fileUpload.file);
 
     uploadTask.on(
@@ -91,8 +91,8 @@ export class UploadFileService {
     this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {name: newName});
   }  
 
-  addFileTag(fileUpload: FileUpload, newTag: string[]){
-    this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {tags: newTag});
+  addFileTag(fileUpload: FileUpload, newTagArray: string[]){
+    this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {tags: newTagArray});
 
     //fileUpload.tags = newTag;
   }

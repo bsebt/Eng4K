@@ -22,10 +22,15 @@
                     <a href="{{fileUpload.url}}" class="btn btn-primary">
                         View
                     </a>
-                    Add Tag: <input type="text" name="tag" ><br>
-                    <button class="btn btn-danger" (click)="addTag(tag)">
+                    <!-- not sure how to pass the input to the button -->
+                <form (ngSubmit)="addTag(f)" #f="ngForm"> 
+                        <div class="form-group">
+                    Add Tag: <input type="text" name="tag"><br>
+                        </div>
+                    <button class="btn btn-danger" type="submit">
                         Add Custom Tag
                     </button>
+                </form>
                     <button class="btn btn-danger" (click)="deleteFileUpload(fileUpload)">
                         Delete
                     </button>
