@@ -23,9 +23,9 @@
       <div *ngIf="areFilesAvailable(); else show_empty">
           <!-- <div class="panel-heading">List of Files</div> -->
           <ng-container *ngIf="(fileUploads | fileFilter:searchTerm) as result">
-            <div *ngFor="let file of result">
+            <div *ngFor="let file of result; let i = index">
               <div class="panel-body">
-                <details-upload [fileUpload]='file'></details-upload>
+                <details-upload [fileUpload]='file' [index]='i'></details-upload>
               </div>
             </div>
             <div *ngIf="!result.length">
