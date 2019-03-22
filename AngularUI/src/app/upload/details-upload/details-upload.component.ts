@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { FileUpload } from '../fileupload';
 import { UploadFileService } from '../upload-file.service';
 
@@ -7,7 +7,7 @@ import { UploadFileService } from '../upload-file.service';
   templateUrl: './details-upload.component.html',
   styleUrls: ['./details-upload.component.css']
 })
-export class DetailsUploadComponent implements OnInit {
+export class DetailsUploadComponent implements OnInit{
 
   @Input() fileUpload: FileUpload;
   // Get this number from *ngFor.
@@ -24,6 +24,8 @@ export class DetailsUploadComponent implements OnInit {
 
   ngOnInit() {
     // this.detectFileChanges();
+    
+
   }
 
   deleteFileUpload(fileUpload) {
@@ -71,4 +73,12 @@ export class DetailsUploadComponent implements OnInit {
     title.innerHTML = this.newFileName;
     this.uploadService.renameFileUpload(fileUpload, this.newFileName);
   }
+
+  addTag(tag: string) {
+    let newTagArray = this.fileUpload.tags;
+    newTagArray.push(tag);
+    this.uploadService.addFileTag(this.fileUpload, newTagArray);
+  }
+
+
 }

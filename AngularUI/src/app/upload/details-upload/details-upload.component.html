@@ -22,6 +22,10 @@
                     <a href="{{fileUpload.url}}" class="btn btn-primary">
                         View
                     </a>
+                    Add Tag: <input type="text" name="tag" ><br>
+                    <button class="btn btn-danger" (click)="addTag(tag)">
+                        Add Custom Tag
+                    </button>
                     <button class="btn btn-danger" (click)="deleteFileUpload(fileUpload)">
                         Delete
                     </button>
