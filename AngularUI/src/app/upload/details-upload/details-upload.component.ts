@@ -10,6 +10,8 @@ import { UploadFileService } from '../upload-file.service';
 export class DetailsUploadComponent implements OnInit {
 
   @Input() fileUpload: FileUpload;
+  // Get this number from *ngFor.
+  @Input() index: number;
 
   isFiledEdited: boolean = false;
   newFileName: string;
@@ -21,7 +23,7 @@ export class DetailsUploadComponent implements OnInit {
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit() {
-    this.detectFileChanges();
+    // this.detectFileChanges();
   }
 
   deleteFileUpload(fileUpload) {
@@ -47,7 +49,7 @@ export class DetailsUploadComponent implements OnInit {
   detectFileChanges() {
     // To access the variable within the listener
     let self = this;
-    let title = document.getElementById("editName");
+    let title = <HTMLInputElement>document.getElementsByClassName("editName")[this.index];
 
     title.addEventListener("input", function() {
       self.isFiledEdited = true;
@@ -56,14 +58,16 @@ export class DetailsUploadComponent implements OnInit {
 
     // Prevent user from adding a new line.
     title.addEventListener('keypress', (e) => {
-      if (e.which === 13) e.preventDefault();
+      if (e.key === "Enter") {
+        e.preventDefault();
+      } 
     });
   }
 
   renameFile(fileUpload) {
     this.isFiledEdited = false;
 
-    let title = document.getElementById("editName");
+    let title = <HTMLInputElement>document.getElementsByClassName("editName")[this.index];
     title.innerHTML = this.newFileName;
     this.uploadService.renameFileUpload(fileUpload, this.newFileName);
   }

@@ -31,6 +31,9 @@
                     <hr>
                   </div>
                 </div>
+            <div *ngFor="let file of result; let i = index">
+              <div class="panel-body">
+                <details-upload [fileUpload]='file' [index]='i'></details-upload>
               </div>
             </div>
             
