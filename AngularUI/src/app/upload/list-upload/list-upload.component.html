@@ -23,11 +23,17 @@
       <div *ngIf="areFilesAvailable(); else show_empty">
           <!-- <div class="panel-heading">List of Files</div> -->
           <ng-container *ngIf="(fileUploads | fileFilter:searchTerm) as result">
-            <div *ngFor="let file of result">
-              <div class="panel-body">
-                <details-upload [fileUpload]='file'></details-upload>
+            <div class="container">
+              <div class="card-deck row">
+                <div class="card col-md-6" *ngFor="let file of result">
+                  <div class="card-block">
+                    <details-upload [fileUpload]='file'></details-upload>
+                    <hr>
+                  </div>
+                </div>
               </div>
             </div>
+            
             <div *ngIf="!result.length">
               <br>  
               <h1>No file named "{{searchTerm}}" found :(</h1>
