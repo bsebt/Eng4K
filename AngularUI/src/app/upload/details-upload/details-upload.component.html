@@ -13,6 +13,10 @@
                 <h4>Uploaded: {{fileUpload.date}}</h4>
                 <hr>
             </div>
+            <div *ngIf="fileUpload.date">
+                <h4>Tags: {{fileUpload.tags}}</h4>
+                <hr>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <a href="{{fileUpload.url}}" class="btn btn-primary">

@@ -89,4 +89,8 @@ export class UploadFileService {
   renameFileUpload(fileUpload: FileUpload, newName: string) {
     this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {name: newName});
   }  
+
+  addFileTag(fileUpload: FileUpload, newTag: string[]){
+    fileUpload.tags = newTag;
+  }
 }
