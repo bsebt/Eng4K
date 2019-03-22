@@ -52,6 +52,7 @@ export class UploadFileService {
           fileUpload.name = fileUpload.file.name;
           fileUpload.size = fileUpload.file.size;
           fileUpload.date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+          fileUpload.tags = [];
           this.saveFileData(fileUpload);
         });
       }
