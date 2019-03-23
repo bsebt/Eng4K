@@ -75,9 +75,11 @@ export class DetailsUploadComponent implements OnInit{
   }
 
   addTag(tag: string) {
+    console.log(tag);
     let newTagArray = this.fileUpload.tags;
     newTagArray.push(tag);
     this.uploadService.addFileTag(this.fileUpload, newTagArray);
+    
   }
 
 

@@ -100,8 +100,8 @@ export class UploadFileService {
     this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {name: newName});
   }  
 
-  addFileTag(fileUpload: FileUpload, newTag: string[]){
-    this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {tags: newTag});
+  addFileTag(fileUpload: FileUpload, newTagArray: string[]){
+    this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {tags: newTagArray});
 
     //fileUpload.tags = newTag;
   }
