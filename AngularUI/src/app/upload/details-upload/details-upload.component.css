@@ -16,3 +16,9 @@ a, button {
 hr {
     margin: 0;
 }
+
+h4 {
+    word-wrap: break-word;
+    white-space: pre-line;
+    max-width: 90%;
+}

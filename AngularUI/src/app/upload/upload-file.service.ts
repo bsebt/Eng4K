@@ -28,7 +28,7 @@ export class UploadFileService {
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef
-      .child(`${this.basePath}/${this.userId}/${fileUpload.key}/${fileUpload.file.name}`)
+      .child(`${this.basePath}/${this.userId}/${fileUpload.file.name}`)
       .put(fileUpload.file);
 
     uploadTask.on(
@@ -36,6 +36,7 @@ export class UploadFileService {
       snapshot => {
         // in progress
         const snap = snapshot as firebase.storage.UploadTaskSnapshot;
+        console.log(snap.ref.parent.name);
         progress.percentage = Math.round(
           (snap.bytesTransferred / snap.totalBytes) * 100
         );
@@ -50,6 +51,7 @@ export class UploadFileService {
           console.log('File available at', downloadURL);
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
+          console.log(this.getFileUploadKey(fileUpload.name));
           fileUpload.size = fileUpload.file.size;
           fileUpload.date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
           fileUpload.tags = [''];
@@ -60,7 +62,14 @@ export class UploadFileService {
   }
 
   private saveFileData(fileUpload: FileUpload) {
-    this.db.list(`${this.basePath}/${this.userId}`).push(fileUpload);
+    this.db.list(`${this.basePath}/${this.userId}`).push(fileUpload).on("value", snap => {
+      console.log(snap.key);
+      this.deleteFileStorage(fileUpload.name);
+      const storageRef = firebase.storage().ref();
+    const uploadTask = storageRef
+      .child(`${this.basePath}/${this.userId}/${snap.key}/${fileUpload.file.name}`)
+      .put(fileUpload.file);
+    });
   }
 
   getFileUploads(numberItems): AngularFireList<any> {
@@ -95,5 +104,11 @@ export class UploadFileService {
     this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {tags: newTag});
 
     //fileUpload.tags = newTag;
+  }
+
+  getFileUploadKey(name: string) {
+    return this.db.list(`${this.basePath}/${this.userId}/`, ref => 
+      ref.startAt(name).endAt(name+"\uf8ff")
+    )
   }
 }
