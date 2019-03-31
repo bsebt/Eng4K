@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { FileUpload } from '../fileupload';
 import { UploadFileService } from '../upload-file.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'details-upload',
@@ -39,7 +40,8 @@ export class DetailsUploadComponent implements OnInit{
     } else {
       this.modifiedUrl = this.fileUpload.url;
     }
-    this.limitedTags = this.fileUpload.tags.slice(0, 3);
+    this.limitedTags = this.getArrayWithoutEmptyFields(this.fileUpload.tags.slice(0, 3));
+    this.personalTags = this.getArrayWithoutEmptyFields(this.fileUpload.personalTags.slice(0, 4));
   }
 
   deleteFileUpload(fileUpload) {
@@ -88,24 +90,30 @@ export class DetailsUploadComponent implements OnInit{
     this.uploadService.renameFileUpload(fileUpload, this.newFileName);
   }
 
-  addTag(tag: string) {
-    console.log(tag);
-    let newTagArray = this.fileUpload.tags;
-    newTagArray.push(tag);
-    this.uploadService.addFileTag(this.fileUpload, newTagArray);
-    
+  addTag(f: NgForm) {
+    let tag = f.value.tag.toString();
+    console.log(this.getTagsToString(this.limitedTags));
+    if (tag !== '') {
+      let newTagArray = this.fileUpload.personalTags;
+      newTagArray.push(tag);
+      this.uploadService.addPersonalFileTag(this.fileUpload, newTagArray);
+    }
   }
 
   getTagsToString(tagsArray: string []) {
     let result: string = '';
 
     tagsArray.forEach((tag, index) => {
-      if (index != this.limitedTags.length - 1) {
+      if (index != tagsArray.length - 1) {
         result += tag + ', ';
       } else {
         result += tag;
       }
     })
     return result;
+  }
+
+  getArrayWithoutEmptyFields(arr: string []): string [] {
+    return arr.filter((entry) => { return entry.trim() != '' });
   }
 }

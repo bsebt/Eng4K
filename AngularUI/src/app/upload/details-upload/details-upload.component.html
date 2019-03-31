@@ -24,17 +24,6 @@
                     <a href="{{modifiedUrl}}" class="btn btn-primary">
                         View
                     </a>
-                    <!-- not sure how to pass the input to the button -->
-                    <div>
-                        <form (ngSubmit)="addTag(f)" #f="ngForm"> 
-                            <div class="form-group">
-                        Add Tag: <input type="text" name="tag"><br>
-                            </div>
-                        <button class="btn btn-danger" type="submit">
-                            Add Custom Tag
-                        </button>
-                        </form>
-                    </div>   
                     <button class="btn btn-danger" (click)="deleteFileUpload(fileUpload)">
                         Delete
                     </button>
@@ -43,6 +32,24 @@
                     </button>
                 </div>
             </div>
+            <!-- not sure how to pass the input to the button -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <form *ngIf="personalTags.length < 3" name="form" class="form-inline" (ngSubmit)="addTag(f)" #f="ngForm"> 
+                        <div class="form-group">
+                            <input 
+                            type="text" 
+                            name="tag"
+                            ngModel 
+                            class="form-control">
+                            <br>
+                        </div>
+                        <button class="btn btn-danger" type="submit">
+                                Add Custom Tag
+                        </button>
+                    </form>
+                </div>
+            </div>   
         </div>
     </div>
 </div>

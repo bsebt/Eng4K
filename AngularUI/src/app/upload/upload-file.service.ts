@@ -55,6 +55,7 @@ export class UploadFileService {
           fileUpload.size = fileUpload.file.size;
           fileUpload.date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
           fileUpload.tags = [''];
+          fileUpload.personalTags = [''];
           this.saveFileData(fileUpload);
         });
       }
@@ -106,13 +107,15 @@ export class UploadFileService {
 
   addFileTag(fileUpload: FileUpload, newTagArray: string[]){
     this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {tags: newTagArray});
-
-    //fileUpload.tags = newTag;
   }
 
   getFileUploadKey(name: string) {
     return this.db.list(`${this.basePath}/${this.userId}/`, ref => 
       ref.startAt(name).endAt(name+"\uf8ff")
     )
+  }
+
+  addPersonalFileTag(fileUpload: FileUpload, newTagArray: string[]){
+    this.db.list(`${this.basePath}/${this.userId}/`).update(fileUpload.key, {personalTags: newTagArray});
   }
 }

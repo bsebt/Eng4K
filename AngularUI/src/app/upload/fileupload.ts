@@ -6,7 +6,8 @@ export class FileUpload {
     file: File;
     size: number;
     date: string;
-    tags: string[];
+    tags: string [];
+    personalTags: string [];
  
     constructor(file: File) {
         this.file = file;
