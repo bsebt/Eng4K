@@ -17,6 +17,8 @@ export class DetailsUploadComponent implements OnInit{
   newFileName: string;
   modifiedUrl: string;
   readonly queryParameter = "%2F";
+  limitedTags: string [] = [];
+  personalTags: string [] = [];
 
   // Bytes to KB and MB
   static readonly ONE_KB = 1024;
@@ -37,6 +39,7 @@ export class DetailsUploadComponent implements OnInit{
     } else {
       this.modifiedUrl = this.fileUpload.url;
     }
+    this.limitedTags = this.fileUpload.tags.slice(0, 3);
   }
 
   deleteFileUpload(fileUpload) {
@@ -93,5 +96,16 @@ export class DetailsUploadComponent implements OnInit{
     
   }
 
+  getTagsToString(tagsArray: string []) {
+    let result: string = '';
 
+    tagsArray.forEach((tag, index) => {
+      if (index != this.limitedTags.length - 1) {
+        result += tag + ', ';
+      } else {
+        result += tag;
+      }
+    })
+    return result;
+  }
 }

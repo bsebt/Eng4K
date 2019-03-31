@@ -11,8 +11,12 @@
                 <h4>Uploaded: {{fileUpload.date}}</h4>
                 <hr>
             </div>
-            <div *ngIf="fileUpload.date">
-                <h4>Tags: {{fileUpload.tags}}</h4>
+            <div *ngIf="limitedTags.length > 0">
+                <h4>Generated Tags: {{getTagsToString(limitedTags)}}</h4>
+                <hr>
+            </div>
+            <div *ngIf="personalTags.length > 0">
+                <h4>Personal Tags: {{getTagsToString(personalTags)}}</h4>
                 <hr>
             </div>
             <div class="row">
@@ -21,14 +25,16 @@
                         View
                     </a>
                     <!-- not sure how to pass the input to the button -->
-                <form (ngSubmit)="addTag(f)" #f="ngForm"> 
-                        <div class="form-group">
-                    Add Tag: <input type="text" name="tag"><br>
-                        </div>
-                    <button class="btn btn-danger" type="submit">
-                        Add Custom Tag
-                    </button>
-                </form>
+                    <div>
+                        <form (ngSubmit)="addTag(f)" #f="ngForm"> 
+                            <div class="form-group">
+                        Add Tag: <input type="text" name="tag"><br>
+                            </div>
+                        <button class="btn btn-danger" type="submit">
+                            Add Custom Tag
+                        </button>
+                        </form>
+                    </div>   
                     <button class="btn btn-danger" (click)="deleteFileUpload(fileUpload)">
                         Delete
                     </button>
