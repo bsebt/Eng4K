@@ -15,6 +15,8 @@ export class DetailsUploadComponent implements OnInit{
 
   isFiledEdited: boolean = false;
   newFileName: string;
+  modifiedUrl: string;
+  readonly queryParameter = "%2F";
 
   // Bytes to KB and MB
   static readonly ONE_KB = 1024;
@@ -23,9 +25,13 @@ export class DetailsUploadComponent implements OnInit{
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit() {
-    // this.detectFileChanges();
-    
-
+    // Add the file key between the uid and file name.
+    this.modifiedUrl = this.fileUpload.url
+    .substring(0, this.fileUpload.url.lastIndexOf(this.queryParameter))
+    .concat(this.queryParameter + this.fileUpload.key)
+    .concat(this.fileUpload.url.substring(this.fileUpload.url.lastIndexOf(this.queryParameter), this.fileUpload.url.length - 1));
+    // Reflect the new URL changes in the real time database as well.
+    this.uploadService.renameFileUrl(this.fileUpload, this.modifiedUrl);
   }
 
   deleteFileUpload(fileUpload) {
