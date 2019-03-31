@@ -6,6 +6,10 @@ import { HomeComponent } from './home/home-component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { UserComponent } from './user/user.component';
+import { UserAgreementComponent } from './user-agreement/user-agreement.component';
+import { TermsAgreementComponent } from './terms-agreement/terms-agreement.component';
+
+
 
 
 export const rootRouterConfig: Routes = [
@@ -16,4 +20,6 @@ export const rootRouterConfig: Routes = [
     { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
     { path: 'files', component: ListUploadComponent, canActivate: [AuthGuard]},
     { path: 'upload', component: FormUploadComponent, canActivate: [AuthGuard]},
+    { path: 'terms', component: TermsAgreementComponent},
+    { path: 'privacy', component: UserAgreementComponent},
 ];
