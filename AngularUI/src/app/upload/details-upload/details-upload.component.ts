@@ -26,12 +26,17 @@ export class DetailsUploadComponent implements OnInit{
 
   ngOnInit() {
     // Add the file key between the uid and file name.
-    this.modifiedUrl = this.fileUpload.url
-    .substring(0, this.fileUpload.url.lastIndexOf(this.queryParameter))
-    .concat(this.queryParameter + this.fileUpload.key)
-    .concat(this.fileUpload.url.substring(this.fileUpload.url.lastIndexOf(this.queryParameter), this.fileUpload.url.length - 1));
-    // Reflect the new URL changes in the real time database as well.
-    this.uploadService.renameFileUrl(this.fileUpload, this.modifiedUrl);
+    if (!this.fileUpload.url.includes(this.fileUpload.key)) {
+      this.modifiedUrl = this.fileUpload.url
+      .substring(0, this.fileUpload.url.lastIndexOf(this.queryParameter))
+      .concat(this.queryParameter + this.fileUpload.key)
+      .concat(this.fileUpload.url.substring(this.fileUpload.url.lastIndexOf(this.queryParameter), this.fileUpload.url.length - 1));
+      // Reflect the new URL changes in the real time database as well.
+      this.uploadService.renameFileUrl(this.fileUpload, this.modifiedUrl);
+      console.log("WTF");
+    } else {
+      this.modifiedUrl = this.fileUpload.url;
+    }
   }
 
   deleteFileUpload(fileUpload) {
