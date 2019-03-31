@@ -20,3 +20,4 @@ script:
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN --only database
+  - firebase deploy --token $FIREBASE_TOKEN --only hosting
