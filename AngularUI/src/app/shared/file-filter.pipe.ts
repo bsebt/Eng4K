@@ -15,7 +15,8 @@ export class FileFilterPipe implements PipeTransform{
         }
 
         return fileUploads.filter(fileUpload =>
-            fileUpload.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+            fileUpload.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
+            || fileUpload.personalTags.indexOf(searchTerm) !== -1);
     }
 
 }
