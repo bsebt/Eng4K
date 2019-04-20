@@ -1,4 +1,4 @@
-<ng-template [ngIf]="pass">
+<ng-template [ngIf]="didUploadFail">
     <div>
         <h3>
             Upload Failed. File must be 3MB or under!
@@ -43,7 +43,8 @@
 <br>
 
 <div class="upload-label">
-    <label class="btn btn-default"> <input type="file" (change)="selectFile($event)" accept=".pdf">
+    <label class="btn btn-default"> 
+        <input type="file" id="myFile" (change)="selectFile($event)" accept=".pdf">
     </label>
 
     <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>

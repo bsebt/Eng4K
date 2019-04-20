@@ -14,7 +14,7 @@ export class FormUploadComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: FileUpload;
   progress: { percentage: number } = { percentage: 0 };
-  pass: Boolean;
+  didUploadFail: Boolean;
  
   constructor(private uploadService: UploadFileService) { }
  
@@ -26,14 +26,18 @@ export class FormUploadComponent implements OnInit {
   }
  
   upload() {
-    this.pass = true;
+    this.didUploadFail = true;
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     //limit file size to 3MB as per requirements 
     if(file.size < 3 * 1024 * 1024){
-    this.pass = false;
-    this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
+      this.didUploadFail = false;
+      this.currentFileUpload = new FileUpload(file);
+      this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
     }
+
+    // Clear upload field after everything is done.
+    let fileElement = <HTMLInputElement>document.getElementById('myFile');
+    fileElement.value = null;
   }
 }
