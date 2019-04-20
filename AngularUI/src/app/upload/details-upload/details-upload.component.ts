@@ -78,6 +78,7 @@ export class DetailsUploadComponent implements OnInit{
     title.addEventListener('keypress', (e) => {
       if (e.key === "Enter") {
         e.preventDefault();
+        this.renameFile(this.fileUpload);
       } 
     });
   }
