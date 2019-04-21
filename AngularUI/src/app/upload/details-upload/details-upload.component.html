@@ -15,7 +15,7 @@
                 <h4>Generated Tags: {{getTagsToString(limitedTags)}}</h4>
                 <hr>
             </div>
-            <div *ngIf="limitedTags.length <= 0">
+            <div *ngIf="limitedTags.length === 0">
                 <h4>Generating Tags...</h4>
                 <hr>
             </div>
