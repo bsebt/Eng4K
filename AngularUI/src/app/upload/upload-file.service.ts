@@ -56,6 +56,7 @@ export class UploadFileService {
           fileUpload.date = formatDate(new Date(), 'yyyy/MM/dd', 'en');
           fileUpload.tags = [''];
           fileUpload.personalTags = [''];
+          fileUpload.docType = '';
           this.saveFileData(fileUpload);
         });
       }

@@ -11,6 +11,14 @@
                 <h4>Uploaded: {{fileUpload.date}}</h4>
                 <hr>
             </div>
+            <div *ngIf="fileUpload.docType">
+                <h4>Document Type: {{fileUpload.docType}}</h4>
+                <hr>
+            </div>
+            <div *ngIf="!fileUpload.docType">
+                <h4>Generating Document Type...</h4>
+                <hr>
+            </div>
             <div *ngIf="limitedTags.length > 0">
                 <h4>Generated Tags: {{getTagsToString(limitedTags)}}</h4>
                 <hr>
