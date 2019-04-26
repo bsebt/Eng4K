@@ -13,10 +13,10 @@ export class FileFilterPipe implements PipeTransform{
         if (!fileUploads || !searchTerm) {
             return fileUploads;
         }
-
+        
         return fileUploads.filter(fileUpload =>
             fileUpload.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
-            || fileUpload.personalTags.indexOf(searchTerm) !== -1);
+            || fileUpload.personalTags.findIndex(personalTag => personalTag.includes(searchTerm)) !== -1
+            || fileUpload.tags.findIndex(generatedTag => generatedTag.includes(searchTerm)) !== -1);
     }
-
 }

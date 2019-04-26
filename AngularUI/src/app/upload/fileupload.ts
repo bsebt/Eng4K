@@ -8,6 +8,7 @@ export class FileUpload {
     date: string;
     tags: string [];
     personalTags: string [];
+    docType: string;
  
     constructor(file: File) {
         this.file = file;
